@@ -1,0 +1,89 @@
+table {
+  width: 100%;
+  border: 1px black;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.mat-cell{
+  white-space: 'normal';
+  word-wrap:'break-word';
+}
+
+td, th {
+  width: 25%;
+  word-wrap:break-word; /*old browsers*/
+  overflow-wrap:break-word;
+}
+
+.mat-table {
+  display: table;
+
+  > .mat-header-row, > .mat-row {
+    display: table-row;
+
+    > .mat-header-cell, > .mat-cell {
+      display: table-cell;
+      height: 48px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.mat-elevation {
+  text-align: center;
+}
+
+.btn-cust {
+  font-size: 30px;
+}
+
+.fa-pencil-square:before {
+  color: #607d8b;
+}
+
+.fa-eye:before {
+  color: #607d8b;
+}
+
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 80%;
+}
+
+.mat-chip {
+  border-radius: 50%;
+  height: 50px;
+}
+
+.mat-header-row {
+  background-color: #038c9e;
+  color: white;
+  position: sticky;
+  position: -webkit-sticky;
+}
+
+.excel {
+  font-size: 30px;
+  float: right;
+  color: green;
+  box-shadow: 0 5px 5px 0.2px rgba(0, 0, 0, 0.1);
+}
+
+.table-bordered>thead>tr>th, .table-bordered>thead>tr>td {
+  border: 0px;
+}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+  border: 0px solid #ddd;
+}
+

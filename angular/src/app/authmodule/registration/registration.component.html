@@ -1,0 +1,160 @@
+
+
+<div class="singup">
+  <br><br>
+  <mat-card class="card-style">
+    <mat-card-title class="card-title">Registration</mat-card-title>
+
+    <mat-card-content class="card-content">
+      <form #user="ngForm">
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              name="user_id"
+              placeholder="Email Id"
+              required
+              #useridRef="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              [(ngModel)]="user.user_id"
+            />
+  <mat-error *ngIf="useridRef.invalid && (useridRef.dirty || useridRef.touched)">
+    <mat-error *ngIf = "useridRef.errors?.required">
+        Email field can't be blank
+    </mat-error>
+    <mat-error *ngIf = "useridRef.errors?.pattern && useridRef.touched">
+        The email id doesn't seem right
+    </mat-error>
+  </mat-error>
+
+
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              #passwordRef="ngModel"
+              [(ngModel)]="user.password"
+            />
+            <mat-error *ngIf="passwordRef.touched && passwordRef.invalid">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field>
+            <input
+              matInput
+              type="password"
+              name="cfpassword"
+              placeholder="Confirm Password"
+              required
+              #cfPwdRef="ngModel"
+              [(ngModel)]="cfpassword"
+            />
+            <mat-error *ngIf="cfPwdRef.touched && cfPwdRef.invalid">
+              Confirm Password is required
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field>
+            <input
+              matInput
+              name="firstName"
+              placeholder="First Name"
+              required
+              #fNameRef="ngModel"
+              pattern="^[A-Za-z]+$"
+              [(ngModel)]="user.firstName"
+            />
+            <mat-error *ngIf="fNameRef.invalid && (fNameRef.dirty || fNameRef.touched)">
+
+            <mat-error *ngIf = "fNameRef.errors?.required">
+                First Name is required
+            </mat-error>
+            <mat-error *ngIf = "fNameRef.errors?.pattern && fNameRef.touched">
+                First Name should contain only character
+            </mat-error>
+          </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="lastName"
+              placeholder="Last Name"
+              [(ngModel)]="user.lastName"
+              required
+              #LNameRef="ngModel"
+              pattern="[A-Za-z]+$"
+            />
+
+
+            <mat-error *ngIf="LNameRef.invalid && (LNameRef.dirty || LNameRef.touched)">
+
+                <mat-error *ngIf = "LNameRef.errors?.required">
+                    Last Name is required
+                </mat-error>
+                <mat-error *ngIf = "LNameRef.errors?.pattern && LNameRef.touched">
+                    Last Name should contain only character
+                </mat-error>
+              </mat-error>
+
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="mobileNo"
+              #mobileNo
+              maxlength="10"
+              required
+              pattern='^[0-9]{10}$'
+              #mNoRef="ngModel"
+              placeholder="Mobile No"
+              [(ngModel)]="user.mobileNo"
+            />
+            <mat-hint align="end">{{ mobileNo.value.length }} / 10</mat-hint>
+            <mat-error *ngIf="mNoRef.touched && mNoRef.invalid && !mNoRef.errors?.pattern">
+              Mobile Number is required
+            </mat-error>
+            <mat-error *ngIf="mNoRef.errors?.pattern">
+                Mobile Number should contain 10 digit numerical values
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea
+              matInput
+              name="location"
+              placeholder="Location"
+              required
+              #locRef="ngModel"
+              ngx-google-places-autocomplete
+
+              [(ngModel)]="user.location"
+              #placesRef="ngx-places"
+              (onAddressChange)="handleAddressChange($event)"
+            ></textarea>
+
+            <mat-error *ngIf="locRef.touched && locRef.invalid">
+              Location is required
+            </mat-error>
+          </mat-form-field>
+
+          <br /><br />
+
+          <button
+            mat-flat-button
+            color="warn" class='btn-effect'
+            [disabled]="!user.valid"
+            *ngIf="!isLoading"
+            (click)="register(user.value, user)"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+      <br />
+    </mat-card-content>
+  </mat-card>
+</div>

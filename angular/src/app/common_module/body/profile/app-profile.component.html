@@ -1,0 +1,167 @@
+<mat-card>
+  <div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="card ">
+            <div class="card-title panel-header">
+              <i class="fa fa-user" style="font-size:38px"></i>
+
+            </div>
+            <div class="card-body paper ">
+              <br />
+              <form
+                #profile="ngForm"
+                *ngIf="userData"
+                (ngSubmit)="updateProfile(userData)"
+              >
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; -->
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Email address"
+                        [ngModelOptions]="{ standalone: true }"
+                        disabled
+                        [(ngModel)]="userData.user_id"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> &nbsp; -->
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="First Name"
+                        [ngModelOptions]="{ standalone: true }"
+                        required
+                        pattern="^[A-Za-z]+$"
+                        #refFirstName='ngModel'
+                        [(ngModel)]="userData.firstName"
+                      />
+
+                      <mat-error *ngIf="refFirstName.invalid && (refFirstName.dirty || refFirstName.touched)">
+
+                          <mat-error *ngIf = "refFirstName.errors?.required">
+                              First Name is required
+                          </mat-error>
+                          <mat-error *ngIf = "refFirstName.errors?.pattern && refFirstName.touched">
+                              First Name should contain only character
+                          </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> &nbsp; -->
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Last Name"
+                        required
+                        pattern="^[A-Za-z]+$"
+                        #refLastName='ngModel'
+                        [ngModelOptions]="{ standalone: true }"
+                        [(ngModel)]="userData.lastName"
+                      />
+
+                      <mat-error *ngIf="refLastName.invalid && (refLastName.dirty || refLastName.touched)">
+
+                          <mat-error *ngIf = "refLastName.errors?.required">
+                              Last Name is required
+                          </mat-error>
+                          <mat-error *ngIf = "refLastName.errors?.pattern && refLastName.touched">
+                              Last Name should contain only character
+                          </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; -->
+
+                    <mat-form-field>
+                      <input
+                        matInput
+                        placeholder="Contact Number"
+                        [ngModelOptions]="{ standalone: true }"
+                        maxlength="10"
+                        required
+                        pattern='^[0-9]{10}$'
+                        #mNooRef="ngModel"
+                        [(ngModel)]="userData.mobileNo"
+                      />
+                      <mat-error *ngIf="mNooRef.invalid && (mNooRef.dirty || mNooRef.touched)">
+                          <mat-error *ngIf="mNooRef.touched && mNooRef.invalid && !mNooRef.errors?.pattern">
+                                     Mobile Number is required
+                                   </mat-error>
+                                   <mat-error *ngIf="mNooRef.errors?.pattern">
+                                       Mobile Number should contain  10 digit numerical values
+                                     </mat-error>
+
+
+
+                       </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    &nbsp; -->
+
+                    <mat-form-field>
+                      <textarea
+                        matInput
+                        placeholder="Adress"
+                        class=""
+                        [ngModelOptions]="{ standalone: true }"
+                        cols="10"
+                        rows='4'
+                        required
+                        #locRef="ngModel"
+
+                        [(ngModel)]="userData.location"
+                      ></textarea>
+
+                      <mat-error *ngIf="locRef.touched && locRef.invalid">
+                          Location is required
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <br />
+                <div class="">
+                <button class="add-btn" mat-stroked-button  type="submit"
+
+                >
+                  Update Profile
+                </button>
+                <br>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="col-md-6"><app-location></app-location></div>
+
+        <!--
+          <div class="col-md-4">
+
+           </div>
+        -->
+      </div>
+    </div>
+  </div>
+
+  <div></div>
+</mat-card>

@@ -1,0 +1,68 @@
+<button mat-fab (click)="showForm()" color="warn" matTooltip='Raise  a NON -SOS' id="fab-container">
+  <mat-icon class="fa fa-plus " style="font-size: 25px;"></mat-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</button>
+
+<mat-card *ngIf="sosList && !NONSOS">
+  <mat-card-header>
+    <mat-card-title>
+      <section class="text-center text-muted">
+        <h3>Available One Click Services</h3>
+      </section>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-2" *ngFor="let sosService of sosList; let i = index">
+        <div [@fade]='in' class="(i+1)%3==0 ? row : col-sm-6 col-xs-12 col-md-4 col-lg-3">
+          <button mat-raised-button [matTooltip]="sosService.sos_description" [matTooltipPosition]="'above'" class="showButton"
+            (click)="raiseSOS(sosService.sos_name, sosService.sos_emailId)">
+            {{ sosService.sos_name |titlecase }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="container" style="width:20%">
+
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center" style="display: none;">
+        <h3>
+          <div #gmap style="width:100%;height:300px"></div>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="map"></div>
+
+<div class="alert alert-info noRecordFound" *ngIf="!sosList && !NONSOS">
+  No SOS service are available
+</div>
+
+
+<i class="text-muted text-center">Use the below button to Raised a NON SOS incidents</i>
+
+<div *ngIf="NONSOS">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <section class="text-center text-muted">NON SOS</section>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <br />
+
+      <non-sos-form (showNonSosForm)="showOneClickService($event)"></non-sos-form>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-climbing-dot"></ngx-spinner>

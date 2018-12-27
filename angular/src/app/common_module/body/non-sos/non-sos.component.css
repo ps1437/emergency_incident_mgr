@@ -1,0 +1,106 @@
+.incidentForm {
+  position: relative;
+  margin: 2% auto;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 1s ease;
+}
+
+.mat-form-field {
+  padding-left: 25px;
+}
+
+.text-header {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+input,textarea {
+  text-transform: uppercase;
+}
+
+button:disabled,
+button[disabled=disabled]{
+
+  border: 2px solid rgb(231, 231, 231);
+  line-height: 40px;
+  background: #a9e4f7;
+  font-weight: 600;
+  border-radius: 25px;
+  background: -moz-linear-gradient(top, #dfdfdf 0%, #dfdfdf 100%);
+  background: -webkit-linear-gradient(top, #dfdfdf 0%, #dfdfdf 100%);
+  background: linear-gradient(to bottom, #dfdfdf 0%, #dfdfdf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}
+.add-btn {
+  border: 2px solid white;
+  line-height: 40px;
+  background: #a9e4f7;
+  font-weight: 600;
+  border-radius: 25px;
+  background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}
+
+/*
+@media (min-width: 12px)  and (max-width: 320px) {
+  .textArea {
+    width: 70%;
+  }
+}
+
+
+@media (min-width: 321px) and (max-width: 767px) {
+  .textArea {
+    width: 70%;
+  }
+} */
+
+/* @media (min-width: 768px) and (max-width: 1200px) {
+  .textArea {
+    width: 100%;
+  }
+} */
+@media (min-width: 750px) and (max-width: 1400px) {
+.textArea {
+  width: 50%;
+}
+
+}
+@media (min-width: 300px) and (max-width: 750px) {
+.textArea {
+  width: 100%;
+}
+.incidentForm{
+  padding:1px;
+}
+
+.panel-body {
+padding :5px;
+}
+}
+
+.animate {
+  transition: 2s ease, padding 2s linear;
+}
+
+
+
+.mat-form-field-ripple {
+  background-color: #027D7C !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #027D7C !important;
+}
+

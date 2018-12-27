@@ -1,0 +1,81 @@
+.incidentForm {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.panel-header {
+  background-color: #1f6180;
+  line-height: 40px;
+  color: white;
+  font-size: 16px;
+  font-weight: 650px;
+}
+
+.mat-flat-button {
+  line-height: 40px;
+}
+
+.panel-body {
+  color: black;
+}
+
+input {
+  text-transform: uppercase;
+}
+
+.mat-form-field-infix {
+  padding: 25px;
+}
+
+.textArea {
+  width: 100%;
+}
+
+.notify-header {
+  color: white;
+  background-color: #2cb4e0;
+}
+
+.mat-expansion-panel-header-title {
+  color: white;
+  background-color: #0fb4e7;
+}
+
+.mat-expansion-panel {
+  color: white;
+  background-color: #0fb4e7;
+}
+
+.add-btn {
+  border: 2px solid white;
+  line-height: 40px;
+  background: #a9e4f7;
+  font-weight: 600;
+  border-radius: 25px;
+  background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.h3, h3 {
+  font-size: 18px;
+}
+
+button:disabled, button[disabled=disabled] {
+  border: 2px solid rgb(231, 231, 231);
+  line-height: 40px;
+  background: #a9e4f7;
+  font-weight: 600;
+  border-radius: 25px;
+  background: -moz-linear-gradient(top, #dfdfdf 0%, #dfdfdf 100%);
+  background: -webkit-linear-gradient(top, #dfdfdf 0%, #dfdfdf 100%);
+  background: linear-gradient(to bottom, #dfdfdf 0%, #dfdfdf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}

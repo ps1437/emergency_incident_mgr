@@ -1,0 +1,29 @@
+.mat-card{
+
+    width: 90%;
+  align-self: center;
+}
+
+select{
+  width: 30%;
+}
+.mat-elevation {
+  text-align: center;
+}
+.centered{
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+}
+
+.chartjs-render-monitor {
+  -webkit-animation: chartjs-render-animation 0.001s;
+  animation: chartjs-render-animation 0.001s;
+  background-color: whitesmoke;
+
+}
+
+

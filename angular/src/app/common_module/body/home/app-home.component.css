@@ -1,0 +1,104 @@
+.cardWidth {
+  width: 500px;
+}
+
+.showButton {
+  padding: 10px;
+  width: 150px;
+  margin-top: 15px;
+  background: #a9e4f7;
+  background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  font-size: 15px;
+  color: white;
+  box-shadow: 0px 2px wheat;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.showButton:hover {
+  transform: scale(1.1);
+}
+
+.mat-stroked-button {
+  -webkit-transition: 0.1s ease-out;
+  transition: 0.1s ease-out;
+  transition: all 100ms ease;
+  border: 2px 2px solid white;
+}
+
+.add-btn {
+  background-color: white;
+  color: black;
+  line-height: 40px;
+  border: 2px solid grey;
+  -webkit-transition: 0.1s ease-out;
+  transition: 0.2s ease-out;
+  font-weight: 600;
+  border-radius: 25px;
+  box-shadow: 0 5px 5px 0.2px rgba(0, 0, 0, 0.1);
+}
+
+.add-btn:hover {
+  border: 2px solid white;
+  line-height: 40px;
+  background: #a9e4f7;
+  background: -moz-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: -webkit-linear-gradient(top, #a9e4f7 0%, #0fb4e7 100%);
+  background: linear-gradient(to bottom, #a9e4f7 0%, #0fb4e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9e4f7', endColorstr='#0fb4e7', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.delete-btn {
+  background-color: white;
+  color: black;
+  line-height: 40px;
+  border: 2px solid grey;
+  -webkit-transition: 0.1s ease-out;
+  transition: 0.2s ease-out;
+  font-weight: 600;
+  border-radius: 25px;
+  box-shadow: 0 5px 5px 0.2px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn:hover {
+  border: 2px solid white;
+  line-height: 40px;
+  background: #f85032;
+  background: -moz-linear-gradient(top, #f85032 15%, #f16f5c 46%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+  background: -webkit-linear-gradient(top, #f85032 15%, #f16f5c 46%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+  background: linear-gradient(to bottom, #f85032 15%, #f16f5c 46%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=0);
+  color: white;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.delete-btn {
+  background-color: white;
+  color: black;
+  line-height: 40px;
+  border: 2px solid grey;
+  -webkit-transition: 0.1s ease-out;
+  transition: 0.2s ease-out;
+  font-weight: 600;
+  border-radius: 25px;
+  box-shadow: 0 5px 5px 0.2px rgba(0, 0, 0, 0.1);
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 0px 0px 0.2px rgba(0, 0, 0, 0.1), 0 0.4px 0.5px 0 rgba(0, 0, 0, .004), 0 0.4px 0.5px 0 rgba(0, 0, 0, .02);
+}
+
+.float-right {
+  float: right;
+}
+
+.mat-card {
+  height: 100%;
+}

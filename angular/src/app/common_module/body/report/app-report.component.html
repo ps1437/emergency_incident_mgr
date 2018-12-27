@@ -1,0 +1,126 @@
+
+<div class="float-right" *ngIf='!createFlag && userType && reportExist'>
+  <button mat-stroked-button id="add-btn" (click)="showGenerateReportForm()">
+    Generate a report
+  </button>
+</div>
+
+
+
+<ng-container *ngIf="createFlag && reportExist" class='row'>
+
+
+  <div class='col-md-8 col-md-offset-2'>
+    <mat-card>
+
+      <div class="form-group" style='margin-left: 10%'>
+        <label for="sel1">Report:</label>
+        <select class="form-control" id="sel1" [(ngModel)]="reportType">
+          <!-- <option value="I">Type of Incident</option> -->
+          <option value="M">Month wise</option>
+        </select>
+      </div>
+      <br />
+
+      <ng-container *ngIf="reportType == 'M'">
+        <mat-form-field style='margin-left: 10%'>
+          <input matInput placeholder="Month [01-12]" maxlength=2 required pattern="^[0-9]{2}" #monthRef='ngModel'
+            [(ngModel)]="month" />
+          <mat-error *ngIf="monthRef.invalid && (monthRef.dirty || monthRef.touched)">
+
+            <mat-error *ngIf="monthRef.errors?.required && monthRef.touched">
+              Please Enter a month [1-12]
+            </mat-error>
+            <mat-error *ngIf="monthRef.errors?.pattern && monthRef.touched">
+              Month should contain 2-digit numerical value [01]
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field style='margin-left: 10%'>
+          <input matInput placeholder="year[XXXX]" maxlength=4 required pattern="^[0-9]{4}" #yearRef='ngModel'
+            [(ngModel)]="year" />
+
+          <mat-error *ngIf="yearRef.invalid && (yearRef.dirty || yearRef.touched)">
+
+            <mat-error *ngIf="yearRef.errors?.required && yearRef.touched">
+              Please Enter a year [XXXX]
+            </mat-error>
+            <mat-error *ngIf="yearRef.errors?.pattern && yearRef.touched">
+              Year should contain 4-digit numerical value [2001]
+            </mat-error>
+
+          </mat-error>
+        </mat-form-field>
+      </ng-container>
+
+      <br /> <br />
+      <button mat-stroked-button id='add-btn' style='margin-left: 10%' class="float-left" (click)="generateReport(month, year)">
+        Generate
+      </button>
+      &nbsp;
+      &nbsp; <button mat-stroked-button id='delete-btn' style='margin-left: 2%' class="float-left"
+       (click)="showGenerateReportForm()">
+        Go Back
+      </button>
+      <br><br>
+    </mat-card>
+  </div>
+
+</ng-container>
+
+<div class="alert alert-info text-muted text-center" *ngIf='!reportExist'>
+  <b>Incidents are not available to create a report </b></div>
+<div *ngIf="!createFlag && reportExist">
+  <mat-form-field>
+    <mat-select placeholder="Select Chart type" [(ngModel)]="selections">
+      <mat-option *ngFor="let chart of charts" [value]="chart.key" (click)="showChart(chart.key)">
+        {{ chart.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="mat-elevation">
+    <mat-card [@flyFromBottom]='in'>
+      <span class='float-left'></span>
+      <span class='float-right' [matBadge]="totalNoOfIncident" matBadgePosition="after" matTooltip="Total Count"></span>
+      <ng-container *ngIf="doughntFlag">
+        <i class="text-muted">
+          <h4 class="text-center">Doughnut Chart</h4>
+        </i>
+
+        <doughnt-chart [options]="options" [doughnutChartData]="pieChartData" [doughnutChartLabels]="pieChartLabels"></doughnt-chart>
+        <i class="text-muted">
+          <h4 class="text-center">{{ title }}</h4>
+        </i>
+      </ng-container>
+      <ng-container *ngIf="polarFlag">
+        <i class="text-muted">
+          <h4 class="text-center">
+            Ploar Area Chart
+          </h4>
+        </i>
+
+        <ploar-area-chart [options]="options" [polarAreaChartData]="pieChartData" [polarAreaChartLabels]="pieChartLabels"></ploar-area-chart>
+        <i class="text-muted">
+          <h4 class="text-center">{{ title }}</h4>
+        </i>
+      </ng-container>
+
+
+
+
+      <ng-container *ngIf="pieFlag">
+        <i class="text-muted">
+          <h4 class="text-center">Pie Chart</h4>
+
+        </i>
+
+        <pie-chart [options]="options" [pieChartData]="pieChartData" [pieChartLabels]="pieChartLabels"></pie-chart>
+        <i class="text-muted">
+          <h4 class="text-center">{{ title }}</h4>
+        </i>
+      </ng-container>
+    </mat-card>
+  </div>
+</div>

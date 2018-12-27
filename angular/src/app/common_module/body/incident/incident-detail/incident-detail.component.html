@@ -1,0 +1,82 @@
+<mat-card [@flyFromBottom]='in'>
+  <div class="row">
+    <div class="panel panel-primary">
+      <div class="panel-heading text-center text-uppercase text-header panel-header">
+
+         <section *ngIf='viewPage'>  Incident  Details</section>
+         <section *ngIf='!viewPage'> Edit Incident Status Details</section>
+
+      </div>
+
+      <div class="panel-body">
+        <form #updateIncident="ngForm" (ngSubmit)="updateIncidentDetails(updateIncident.value)">
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.incident_no" name="incident_no" placeholder="Incident no"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.incident_type" name="incident_type" placeholder="incident type"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.incident_location" name="incident_location" placeholder="Incident location"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.contact_no" name="contact_no" placeholder="Contact no"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.incident_owner" name="incident_owner" placeholder="Owner"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="readOnly">
+              <input matInput [(ngModel)]="selectedIncident.incident_raised_by" name="incident_raised_by" placeholder="Raised by"
+                readonly />
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedIncident.incident_status" name="incident_status" placeholder="incident status"
+                required>
+                <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-8">
+            <mat-form-field class="textarea">
+              <textarea matInput [(ngModel)]="selectedIncident.incident_desc" name="incident_desc" required #refDes="ngModel"
+                placeholder="Incident description" cols="20" rows="5"></textarea>
+
+              <mat-error *ngIf="refDes.touched && refDes.invalid">
+                Description is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div class="wrapper mat-elevation">
+              <button class="add-btn" mat-stroked-button type="submit" *ngIf='!viewPage && superUser'>
+                Update
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button id="delete-btn" mat-stroked-button type="button" (click)='goBack()'>
+                Go Back
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

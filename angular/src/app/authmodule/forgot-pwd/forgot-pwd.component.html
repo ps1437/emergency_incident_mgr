@@ -1,0 +1,109 @@
+<br><br>
+<div class="wrapper container "  >
+
+<div class="wrapper-landing">
+<div class="singup">
+  <mat-card class="card-style">
+    <mat-card-title class="card-title">Forgot Password</mat-card-title>
+
+    <mat-card-content class="card-content">
+      <mat-card-subtitle></mat-card-subtitle>
+
+
+
+      <mat-form-field>
+        <input
+          matInput
+          name="userId"
+          placeholder="Email Id"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          required
+          #useridRef="ngModel"
+          [(ngModel)]="userId"
+        />
+        <mat-error *ngIf="useridRef.invalid && (useridRef.dirty || useridRef.touched)">
+            <mat-error *ngIf = "useridRef.errors?.required">
+                Email field can't be blank
+            </mat-error>
+            <mat-error *ngIf = "useridRef.errors?.pattern && useridRef.touched">
+                The email id doesn't seem right
+            </mat-error>
+          </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field *ngIf="showResetPwdForm">
+        <input
+          matInput
+          name="pwd"
+          type="password"
+          placeholder="New Password"
+          required
+          #pwdRef="ngModel"
+          [(ngModel)]="pwd"
+        />
+        <mat-error *ngIf="pwdRef.touched && pwdRef.invalid">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field *ngIf="showResetPwdForm">
+        <input
+          matInput
+          name="cpwd"
+          type="password"
+          placeholder="Confirm Passoword"
+          required
+          #cpwdRef="ngModel"
+          [(ngModel)]="cpwd"
+        />
+        <mat-error *ngIf="cpwdRef.touched && cpwdRef.invalid">
+          Confirm Password is required
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field *ngIf="showResetPwdForm">
+        <input
+          matInput
+          name="token"
+          placeholder="Token"
+          required
+          #tokendRef="ngModel"
+          [(ngModel)]="token"
+        />
+        <mat-error *ngIf="tokendRef.touched && tokendRef.invalid">
+          Token is required
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <button
+        mat-button
+        color="warn"
+        *ngIf="!showResetPwdForm"
+        (click)="validateUserId(userId)"
+      >
+        Reset
+      </button>
+      <button
+      class="add-btn" mat-stroked-button
+        *ngIf="showResetPwdForm"
+        (click)="changePassword(token, userId, pwd)"
+      >
+        Change password
+      </button>
+
+
+      <button  id="delete-btn" mat-stroked-button  (click)="goBack()">Back</button>
+      <br>
+      <br /><br />
+      <br />
+      <mat-card-footer>
+        <span class="text-muted" *ngIf="msg">{{ msg }}</span>
+      </mat-card-footer>
+    </mat-card-content>
+    <br> <br>
+  </mat-card>
+</div>
+</div>
+</div>

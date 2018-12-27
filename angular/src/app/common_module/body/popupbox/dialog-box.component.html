@@ -1,0 +1,14 @@
+<div class="popup-width">
+<h2 mat-dialog-title>
+ {{header}}</h2>
+<br>
+<mat-dialog-content>
+<p>{{message}} </p>
+<p><b>{{id}}</b></p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button *ngIf="buttonY" mat-button mat-dialog-close="Y" class="submit-btn" >Yes</button>
+    <button *ngIf="buttonN" mat-button  mat-dialog-close="N">No</button>
+</mat-dialog-actions>
+</div>

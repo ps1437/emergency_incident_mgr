@@ -1,0 +1,9 @@
+.table-hover{
+    background-color: bisque;
+}
+
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0.4px rgba(0,0,0,0.1), 0 0.4px 0.5px 0 rgba(0,0,0,.004), 0 0.4px 0.5px 0 rgba(0,0,0,.02);
+  }
+   

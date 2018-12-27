@@ -1,0 +1,124 @@
+<div class='animate'>
+  <span class="alert alert-danger text-muted text-center" *ngIf="message">{{message}}</span>
+
+  <div class="panel panel-primary " [@flyItems]='in'>
+
+    <div class="panel-heading text-center text-uppercase text-header panel-header">FILL INCIDENT DETAILS</div>
+    <div class="panel-body">
+      <div class="col-sm-6 col-xs-12 col-md-12 col-md-offset-0">
+        <form #addIncident="ngForm" novalidate (ngSubmit)="addNewIncident(addIncident.value,addIncident)">
+          <div class="incidentForm">
+            <mat-form-field>
+              <input matInput name="incident_type" placeholder="Incident Type" required #refIncident='ngModel'
+                [(ngModel)]="addIncident.incident_type" />
+              <mat-error *ngIf="refIncident.invalid && (refIncident.dirty || refIncident.touched)">
+                <mat-error *ngIf="refIncident.errors?.required">
+                  Incident Type Cannot be blank
+                </mat-error>
+
+              </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Status" name="incident_status" [(ngModel)]="addIncident.incident_status">
+                <mat-option *ngFor="let stat of statusList" [value]="stat">
+                  {{stat}}
+                </mat-option>
+              </mat-select>
+
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="contact_no" placeholder="Contact No" required pattern='^[0-9]{10}$' #refContact='ngModel'
+                maxlength="10" [(ngModel)]="addIncident.contact_no" />
+              <mat-error *ngIf="refContact.invalid && (refContact.dirty || refContact.touched)">
+                <mat-error *ngIf="refContact.errors?.required">
+                  Contact Type Cannot be blank
+                </mat-error>
+
+                <mat-error *ngIf="refContact.errors?.pattern && refContact.touched">
+                  Please Enter the 10 digit numerical values only
+                </mat-error>
+              </mat-error>
+
+
+            </mat-form-field>
+            <br>
+            <mat-form-field class="textArea">
+              <textarea matInput name="incident_location" placeholder="Location" ngx-google-places-autocomplete
+                [(ngModel)]="addIncident.incident_location" required #locRef='ngModel' #placesRef="ngx-places"
+                (onAddressChange)="handleAddressChange($event)"></textarea>
+
+              <mat-error *ngIf="locRef.invalid && (locRef.dirty || locRef.touched)">
+                <mat-error *ngIf="locRef.errors?.required">
+                  Location Cannot be blank
+                </mat-error>
+
+              </mat-error>
+
+
+            </mat-form-field>
+            <mat-form-field class="textArea">
+              <textarea matInput name="incident_desc" placeholder="Incident Description" required #refDes='ngModel'
+                [(ngModel)]="addIncident.incident_desc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 </textarea>
+              <mat-error *ngIf="refDes.invalid && (refDes.dirty || refDes.touched)">
+                <mat-error *ngIf="refDes.errors?.required">
+                  Description Cannot be blank
+                </mat-error>
+
+              </mat-error>
+
+            </mat-form-field>
+
+
+
+
+            <div class="row">
+              <br>
+              <div class="col-md-4 col-sm-12 col-xs-12 col-md-offset-4">
+
+                <button class='add-btn' mat-stroked-button type="submit" [disabled]='!addIncident.valid'>Save</button>
+                &nbsp;&nbsp;&nbsp;
+                <button mat-stroked-button id='delete-btn' type="button" (click)='goBack()'>Go Back</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>

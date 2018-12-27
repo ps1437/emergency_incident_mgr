@@ -1,0 +1,91 @@
+<button
+  mat-fab
+  (click)="swap()"
+  *ngIf="userType"
+  color="warn"
+  matTooltip="Add a Notification"
+  id="fab-container"
+>
+  <mat-icon class="fa fa-plus " style="font-size: 25px;"></mat-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</button>
+
+<div *ngIf="!flag">
+  <mat-accordion *ngFor="let notification of notificationList">
+    <br />
+    <mat-expansion-panel [@flyFromBottom]='in' (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="notify-header">
+        <mat-panel-title>
+          <h3>&nbsp;&nbsp;{{ notification.subject |uppercase}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card>
+        <mat-card-content> {{ notification.description  }} </mat-card-content>
+      </mat-card>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div class="panel panel-primary" *ngIf="flag" [@rotateIn]='in'>
+  <div class="text-center text-uppercase text-header panel-header">
+    Notification
+  </div>
+
+  <div class="panel-body">
+    <br />
+
+    <div class="col-sm-6 col-md-8 col-md-offset-2 ">
+      <form
+        #notification="ngForm"
+        (ngSubmit)="createNotification(notification.value, notification)"
+      >
+        <div class="incidentForm">
+          <mat-form-field class="textArea">
+            <input
+              matInput
+              name="subject"
+              placeholder="Subject"
+              required
+              #subject ='ngModel'
+              [(ngModel)]="notification.subject"
+            />
+            <mat-error *ngIf="subject.invalid && (subject.dirty || subject.touched)">
+                <mat-error *ngIf = "subject.errors?.required">
+                    Subject is required
+                </mat-error>
+                
+              </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="textArea">
+            <textarea
+              matInput
+              name="description"
+              rows="16"
+              placeholder=" Description"
+              [(ngModel)]="notification.description"
+            ></textarea>
+          </mat-form-field>
+
+          <div class="wrapper mat-elevation">
+            <button  class="add-btn"  mat-stroked-button type="submit" [disabled]='notification.invalid'>
+              Save
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button
+            
+              id="delete-btn"
+              mat-stroked-button
+              type="button"
+              (click)="swap()"
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

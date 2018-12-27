@@ -1,0 +1,168 @@
+<mat-card>
+
+  <div class="alert alert-info text-muted text-center" [hidden]='count>0 || addFlag '>
+    <b>SOS Services are not yet created</b></div>
+
+  <div class="row">
+    <mat-form-field class="col-md-6  col-md-offset-6 col-sm-offset-2 col-sm-4 col-xs-3 " *ngIf="!addFlag && count>0">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search .............." />
+      <span class="fa fa-search form-control-feedback"></span>
+
+    </mat-form-field>
+
+    <button mat-fab (click)="swap()" color="warn" matTooltip='Add a SOS' id="fab-container">
+      <mat-icon class="fa fa-plus " style="font-size: 25px;"></mat-icon>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+
+    <span (click)="exportAsXLSX()" *ngIf="!addFlag && count>0"><i class="fa fa-file-excel-o excel"></i></span>
+    &nbsp;
+  </div>
+  <br />
+
+  <div class="panel panel-primary" *ngIf="addFlag">
+    <div class="text-center text-uppercase text-header panel-header">
+      SOS Services
+    </div>
+
+    <div class="panel-body">
+      <br /><br />
+      <div class="col-md-4">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>One Click Services</mat-card-title>
+
+          </mat-card-header>
+          <img matCardImage src="../../../assets/SOS.jpg" />
+          <mat-card-content>
+            <span class="text-muted">Please provide the proper details</span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-sm-6 col-md-8 ">
+        <form #addSosService="ngForm" (ngSubmit)="addService(addSosService.value, addSosService)">
+          <div class="incidentForm">
+            <mat-form-field>
+              <input matInput name="sos_emailId" matTooltip="Email Id" placeholder="Email Id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                #emailRef='ngModel' [(ngModel)]="addSosService.sos_emailId" />
+
+              <mat-error *ngIf="emailRef.invalid && (emailRef.dirty || emailRef.touched)">
+                <mat-error *ngIf="emailRef.errors?.required">
+                  Email Id Cannot be blank
+                </mat-error>
+
+                <mat-error *ngIf="emailRef.errors?.pattern && emailRef.touched">
+                  The Email id doesn't seem right
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="sos_name" placeholder="Service Name" required #sosNameRef='ngModel' [(ngModel)]="addSosService.sos_name" />
+              <mat-error *ngIf="sosNameRef.invalid && (sosNameRef.dirty || sosNameRef.touched)">
+                <mat-error *ngIf="sosNameRef.errors?.required">
+                  Service Name Cannot be blank
+                </mat-error>
+
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="sos_owner" placeholder="Service Owner" required #ownerRef='ngModel' [(ngModel)]="addSosService.sos_owner" />
+
+              <mat-error *ngIf="ownerRef.invalid && (ownerRef.dirty || ownerRef.touched)">
+                <mat-error *ngIf="ownerRef.errors?.required">
+                  Owner Name Cannot be blank
+                </mat-error>
+
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="textArea">
+              <textarea matInput name="sos_description" placeholder="Service Description" required #descRef='ngModel'
+                [(ngModel)]="addSosService.sos_description"></textarea>
+
+              <mat-error *ngIf="descRef.invalid && (descRef.dirty || descRef.touched)">
+                <mat-error *ngIf="descRef.errors?.required">
+                  Owner Name Cannot be blank
+                </mat-error>
+
+              </mat-error>
+            </mat-form-field>
+
+            <div class="wrapper mat-elevation">
+              <button class='add-btn' mat-stroked-button type="submit" [disabled]='!addSosService.valid'>
+                Save
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button id='delete-btn' mat-stroked-button type="button" (click)='swap()'>Go Back</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="alert alert-info" *ngIf="!datasource && !addFlag">
+    Services are not created yet !
+  </div> -->
+
+  <div class="mat-elevation table-responsive" [hidden]="addFlag || count==0">
+    <section class="text-center text-muted">
+      <h3>Services details</h3>
+    </section>
+    <table mat-table class="table-bordered text-muted  table-hover" [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="sos_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>SOS No</th>
+        <td mat-cell *matCellDef="let row">{{ row.sos_id |titlecase}}</td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="sos_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.sos_name |titlecase}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="sos_owner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Owner</th>
+        <td mat-cell *matCellDef="let row">{{ row.sos_owner |titlecase}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sos_emailId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Emaild Id</th>
+        <td mat-cell *matCellDef="let row">{{ row.sos_emailId |titlecase}}</td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="sos_des">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color">
+          {{ row.sos_description |titlecase}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color">
+          {{ row.created_date | date: "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row" [style.color]="row.color">
+          <span class="action">
+            <i class="fa fa-trash text-center" aria-hidden="true" matTooltip="delete" (click)="deleteService(row.sos_id)"></i>
+          </span></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" [@flyin]='in'></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+  </div>
+
+
+
+</mat-card>

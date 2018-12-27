@@ -1,0 +1,93 @@
+<nav class="navbar navbar-custome ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">EISM</span>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" (click)="signUpPage()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" (click)="loginPage()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="wrapper container ">
+
+  <div class="sandbox sandbox-correct-pronounciation">
+    <h1 class="heading heading-correct-pronounciation">
+
+      <em>Emergency</em>
+      security <u>incident</u> management system
+    </h1>
+  </div>
+  <div class='container_two'>
+    <div class="wrapper-landing ">
+      <app-registration *ngIf='signUp'>
+      </app-registration>
+      <div class="alert aler-danger">
+      </div>
+      <mat-card class='card-style' *ngIf='!signUp'>
+
+        <mat-card-title class="card-title">Login</mat-card-title>
+
+        <mat-card-content class="card-content">
+          <br>
+          <form (ngSubmit)="onLogin(login.value)" #login="ngForm">
+            <mat-form-field>
+              <input matInput name="user_id" placeholder="Email Id" required #user_idRef="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [(ngModel)]="login.user_id" />
+              <mat-error *ngIf="user_idRef.invalid && (user_idRef.dirty || user_idRef.touched)">
+                <mat-error *ngIf="user_idRef.errors?.required">
+                  Email field can't be blank
+                </mat-error>
+                <mat-error *ngIf="user_idRef.errors?.pattern && user_idRef.touched">
+                  The email id doesn't seem right
+                </mat-error>
+              </mat-error>
+  
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+              <input matInput name="password" type="password" placeholder="Password" required #pwdRef="ngModel"
+                [(ngModel)]="login.passsword" />
+              <mat-error *ngIf="pwdRef.touched && pwdRef.invalid">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+
+            <br /><br />
+            <button mat-flat-button color="warn" class='btn-effect' *ngIf="!isLoading" [disabled]="!login.valid">
+              Login
+            </button>
+
+            <br>
+
+            <div class="text-center">
+              <br />
+
+              <a href="" [routerLink]="['resetPassword']">Forgot/Reset Password </a>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <div class="text-center">
+            <p class="txt-railway text-muted">Signup with:</p>
+            <span (click)="socialSignIn('facebook')"><i id="social-fb" class="fa fa-facebook-square fa-3x social"
+                matTooltip="facebook"></i></span>
+            <span (click)="socialSignIn('google')"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"
+                matTooltip="google"></i></span>
+          </div><br>
+        </mat-card-footer>
+
+      </mat-card>
+
+    </div>
+  </div>
+</div>

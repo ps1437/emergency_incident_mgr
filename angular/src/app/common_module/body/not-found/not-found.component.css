@@ -1,0 +1,31 @@
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+
+.container{
+  background-image: linear-gradient(to right top, #051937, #001a29, #001717, #021006, #070705);
+
+  margin-top: 0px;
+  width:100%;
+  height: 600px;
+  text-align: center;
+  align-self: center;
+}
+  .row{
+  margin-top: 50px;
+}
+
+.h3, h3 {
+  font-size: 18px;
+}
+.error{
+  width: 50%;
+  top:25%;
+  margin-top: 10%;
+  color:white;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  
+}

@@ -1,0 +1,26 @@
+.popup-width{
+    width: 100%;
+    z-index: 2;
+
+}
+
+.mat-dialog-title{
+    background-color: #12678e;
+    padding: 0px;
+    margin:0px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+ .submit-btn{
+  background-color: #12678e;
+  color:white;
+}
+
+.mat-dialog-actions{
+    float:right;
+}
+.mat-dialog-content{
+    text-align: center;
+}

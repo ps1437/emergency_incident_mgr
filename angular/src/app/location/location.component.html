@@ -1,0 +1,27 @@
+<div class="container" style="width:100%">
+    
+
+            <button mat-button [disabled]="isTracking"  (click)="findMe()">Find me</button>
+                    <button mat-button  (click)="trackMe()">Track me</button>
+            <button  mat-button  (click)="stopTrackingPostion()">Stop Tracking</button>
+
+          <div class="text-white">
+            <!-- <span>Longitude: {{currentLong}}</span>
+            <span>Longitude: {{currentLong}}</span> -->
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-center">
+                <h3>
+                  <div #gmap style="width:100%;height:300px"></div>
+                </h3>
+              </div>
+            </div>
+          </div>
+   
+Current location :{{currentLocation}}
+       
+      </div>
+
+      <div id="map"></div>
